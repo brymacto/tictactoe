@@ -17,7 +17,15 @@ div.space {
   width: 149.33333px;
   height: 150px;
   float: left;
-  border: 1px solid #FF3342; }
+  border: 1px solid #FF3342;
+  color: #FF3342;
+  font-size: 8em;
+  font-weight: 900;
+  text-align: center;
+  display: inline-block; }
+  div.space span {
+    display: inline-block;
+    vertical-align: middle; }
 
 div.hover {
   background-color: #FF3342;
