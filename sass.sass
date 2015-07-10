@@ -26,12 +26,15 @@ div.space
   border: 1px solid $c_prim
   color: $c_prim
   font-size: 8em
+  position: relative
   font-weight: 900
   text-align: center
   display: inline-block
   span
     display: inline-block
     vertical-align: middle
+    position: relative
+    top: -25px
 
 div.hover
   background-color: $c_prim
@@ -43,9 +46,12 @@ div#jumbotron
   position: fixed
   width: 250px
   right: 0px
-  top: 25px
+  top: 250px
   padding: 25px
   color: $c_white
+  a
+    text-decoration: underline
+    color: inherit
 
 h1
   font-family: 'Unica One', cursive

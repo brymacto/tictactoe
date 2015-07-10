@@ -20,12 +20,15 @@ div.space {
   border: 1px solid #FF3342;
   color: #FF3342;
   font-size: 8em;
+  position: relative;
   font-weight: 900;
   text-align: center;
   display: inline-block; }
   div.space span {
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    position: relative;
+    top: -25px; }
 
 div.hover {
   background-color: #FF3342;
@@ -37,9 +40,12 @@ div#jumbotron {
   position: fixed;
   width: 250px;
   right: 0px;
-  top: 25px;
+  top: 250px;
   padding: 25px;
   color: #fff; }
+  div#jumbotron a {
+    text-decoration: underline;
+    color: inherit; }
 
 h1 {
   font-family: "Unica One", cursive;
