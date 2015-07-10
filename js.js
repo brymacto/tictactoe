@@ -1,19 +1,33 @@
-$( document ).ready(function() {
-  var currentPlayer = 0 // 0 - X, 1 - O
+  var currentPlayer = 0; // 0 - X, 1 - O
   var ownedX = [];
-  var ownedY = [];
+  var ownedO = [];
 
-  function checkWins() {
+$( document ).ready(function() {
 
 
+  function updateScore() {
+    ownedX = [];
+    ownedO = [];
     $('.space').each(function() {
+
       if ($(this).attr('owner') == 0) {
-        ownedX.push($(this).attr('id'));
+        ownedX.push(parseInt($(this).attr('id')));
       } else if ($(this).attr('owner') == 1) {
-        ownedY.push($(this).attr('id'));
+        ownedO.push(parseInt($(this).attr('id')));
       }
 
+      console.log("owned X: " + ownedX + "owned O: " + ownedO)
+      checkWins(ownedX);
+      checkWins(ownedO);
     });
+
+    function checkWins(arr) {
+      console.log("Checking wins for array: " + arr);
+      if (($.inArray(0, arr) >= 0) && ($.inArray(1, arr) >= 0) && ($.inArray(2, arr) >= 0) ) {
+        console.log("WIN!!");
+      }
+
+    }
 
 
     // for (i = 0; i <= 8; i++) {
@@ -41,16 +55,17 @@ $( document ).ready(function() {
       function() {
 
         if (currentPlayer === 0) {
+
           if ($( this ).attr('avail') != "false") {
             $(this).html('<span>X</span>').attr({avail: 'false', owner: 0});
-            checkWins();
+            updateScore();
             currentPlayer = 1;
           }
 
         } else {
           if ($( this ).attr('avail') != "false") {
             $(this).html('<span>O</span>').attr({avail: 'false', owner: 1});
-            checkWins();
+            updateScore();
             currentPlayer = 0;
           }
         }
