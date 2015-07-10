@@ -2,7 +2,8 @@
   box-sizing: border-box; }
 
 body {
-  background-color: #E6E6E6; }
+  background-color: #E6E6E6;
+  font-family: "Source Sans Pro", sans-serif; }
 
 div.wrapper {
   max-width: 450px;
@@ -10,13 +11,27 @@ div.wrapper {
 
 div.board {
   width: 100%;
-  border: 1px solid #FF3342; }
+  border: 0px solid #FF3342; }
 
 div.space {
   width: 149.33333px;
   height: 150px;
   float: left;
   border: 1px solid #FF3342; }
+
+div.hover {
+  background-color: #FF3342;
+  color: #fff;
+  cursor: pointer; }
+
+div#jumbotron {
+  background-color: #FF3342;
+  position: fixed;
+  width: 250px;
+  right: 0px;
+  top: 25px;
+  padding: 25px;
+  color: #fff; }
 
 h1 {
   font-family: "Unica One", cursive;

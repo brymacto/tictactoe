@@ -1,12 +1,15 @@
 $c_bg: #E6E6E6
 $c_prim: #FF3342
+$c_prim_half: #F3A5A2
 $w_width: 450px
+$c_white: #fff
+
 *
   box-sizing: border-box
 
-
 body
   background-color: #E6E6E6
+  font-family: 'Source Sans Pro', sans-serif
 
 div.wrapper
   max-width: $w_width
@@ -14,13 +17,27 @@ div.wrapper
 
 div.board
   width: 100%
-  border: 1px solid $c_prim
+  border: 0px solid $c_prim
 
 div.space
   width: ($w_width - 2) / 3
   height: $w_width / 3
   float: left
   border: 1px solid $c_prim
+
+div.hover
+  background-color: $c_prim
+  color: $c_white
+  cursor: pointer
+
+div#jumbotron
+  background-color: $c_prim
+  position: fixed
+  width: 250px
+  right: 0px
+  top: 25px
+  padding: 25px
+  color: $c_white
 
 h1
   font-family: 'Unica One', cursive
