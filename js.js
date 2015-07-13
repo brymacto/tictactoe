@@ -10,7 +10,6 @@
       location.reload();
     });
 
-
     function game() {
       this.gameOver = false
       this.ownedX =  [];
@@ -23,7 +22,6 @@
     }
 
     currentGame = new game();
-
 
     var Space = function (e, available, owner) {
       this.element = e;
@@ -49,7 +47,6 @@
           }
         });
 
-
       this.element.on('click', function(e){
         if (currentGame.gameOver == false) {
 
@@ -61,7 +58,7 @@
               that.owner = 1;
               updateScore();
               currentGame.currentPlayer = 2;
-            } 
+            }
 
           } else {
             if (that.available != false) {
@@ -71,7 +68,7 @@
               that.owner = 2;
               updateScore();
               currentGame.currentPlayer = 1;
-            } 
+            }
 
           }
 
@@ -83,10 +80,6 @@
       });
       updateScore();
     }
-
-    //  4 9 2
-    //  3 5 7
-    //  8 2 6
 
     $.each($('.space'), function() {
       var space = new Space($(this), true, null);
@@ -107,10 +100,7 @@
       checkWins(currentGame.ownedX, 1);
       checkWins(currentGame.ownedO, 2);
 
-
-
     }
-
 
       function checkWins(arr, owner) {
         if (($.inArray(0, arr) >= 0) && ($.inArray(1, arr) >= 0) && ($.inArray(2, arr) >= 0) || 
@@ -127,7 +117,6 @@
         }
 
       }
-
 
       function endGame(owner) {
         currentGame.gameOver = true;
@@ -148,7 +137,6 @@
         });
 
         $('.space').addClass( "hover" );
-
 
       }
 
