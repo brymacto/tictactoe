@@ -33,6 +33,23 @@
 
     Space.prototype.listen = function() {
       var that = this;
+      this.element.hover(function(e) { // To do: update this so it works with new OO code
+        if (currentGame.gameOver == false) { 
+          if (that.available != false) { 
+            $( this ).addClass( "hover" );
+          }
+        }
+        }, //on mouse out
+
+        function(e) {
+          if (currentGame.gameOver == false) {
+            if (that.available != true) {
+              $( this ).removeClass( "hover" );
+            }
+          }
+        });
+
+
       this.element.on('click', function(e){
         if (currentGame.gameOver == false) {
 
@@ -60,8 +77,8 @@
 
         }
         $('#currentPlayer').html((currentGame.currentPlayer === 1) ? 'X' : 'O');
-        if (playCount == 9) {
-          endGame();
+        if (currentGame.playCount == 9) {
+          endGame(0);
         }
       });
       updateScore();
@@ -113,54 +130,35 @@
 
 
       function endGame(owner) {
+        currentGame.gameOver = true;
+        $('.board').effect('shake', {direction: 'up', distance: 3, times: 3}, 100)
+        if (owner != 0) {
+          $('#status').html('Game over!  The winner is ' + ((owner === 1) ? 'X' : 'O'));
+          $('#playagain').show();
+        } else 
+        {
+          $('#status').html("Game over!  There were no winners, only losers :(.");
+          $('#playagain').show();
+        }
+        $('#jumbotron').animate({
+          width : "100%", top: '0px'
+        }, 1000, "swing", function() {
+          $( this ).after( ""
+           );
+        });
+
+        $('.space').addClass( "hover" );
 
 
       }
 
 
-      // function endGame(owner) {
-      //   gameOver = true;
-
-      //   $('.board').effect('shake', {direction: 'up', distance: 3, times: 3}, 100)
-
-      //   if (owner != 3) {
-      //     $('#status').html('Game over!  The winner is ' + ((owner === 0) ? 'X' : 'O'));
-      //     $('#playagain').show();
-      //   } else 
-      //   {
-      //     $('#status').html("Game over!  There were no winners, only losers :(.");
-      //     $('#playagain').show();
-      //   }
-      //   $('#jumbotron').animate({
-      //     width : "100%", top: '0px'
-      //   }, 1000, "swing", function() {
-      //     $( this ).after( ""
-      //      );
-      //   });
-
-      //   $('.space').addClass( "hover" );
-
-      // }
 
 
 
 
-    // $('.space').hover(
-    //   function() {
-    //     if (gameOver == false) {
-    //       if ($( this ).attr('avail') != "false") {
-    //         $( this ).addClass( "hover" );
-    //       }
-    //     }
-    //     }, //on mouse out
 
-    //     function() {
-    //       if (gameOver == false) {
-    //         if ($( this ).attr('avail') != "true") {
-    //           $( this ).removeClass( "hover" );
-    //         }
-    //       }
-    //     });
+
 
     // $('.space').click(
     //   function() {
