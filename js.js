@@ -19,6 +19,7 @@
       this.currentPlayer =  1;// 1 = X, 2 = O
       this.playCount = 0;
       this.winner = 0;
+      this.spaces = [];
     }
 
     currentGame = new game();
@@ -41,7 +42,7 @@
               $(this).html('<span>X</span>');
               that.available = false;
               that.owner = 1;
-              // updateScore();
+              updateScore();
               currentGame.currentPlayer = 2;
             } 
 
@@ -51,7 +52,7 @@
               $(this).html('<span>O</span>');
               that.available = false;
               that.owner = 2;
-              // updateScore();
+              updateScore();
               currentGame.currentPlayer = 1;
             } 
 
@@ -63,36 +64,56 @@
           endGame();
         }
       });
+      updateScore();
+    }
 
+    //  4 9 2
+    //  3 5 7
+    //  8 2 6
 
+    $.each($('.space'), function() {
+      var space = new Space($(this), true, null);
+      space.listen();
+      currentGame.spaces.push(space);
+    });
+
+    function updateScore() {
+      currentGame.ownedX = [];
+      currentGame.ownedO = [];
+      for (var space in currentGame.spaces) {
+          if (currentGame.spaces[space].owner == 1) {
+            currentGame.ownedX.push(space);
+          } else if (currentGame.spaces[space].owner == 2) {
+            currentGame.ownedO.push(space);
+          }
+      }
+      checkWins(ownedX, 0);
+      checkWins(ownedO, 1);
 
 
 
     }
 
-    $.each($('.space'), function() {
-      var space = new Space($(this), true, null);
-      space.listen();
-    });
+
+      // function checkWins(arr, owner) {
+      //   if (($.inArray(0, arr) >= 0) && ($.inArray(1, arr) >= 0) && ($.inArray(2, arr) >= 0) || 
+      //     ($.inArray(3, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(5, arr) >= 0) || 
+      //     ($.inArray(6, arr) >= 0) && ($.inArray(7, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
+      //     ($.inArray(0, arr) >= 0) && ($.inArray(3, arr) >= 0) && ($.inArray(6, arr) >= 0) || 
+      //     ($.inArray(1, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(7, arr) >= 0) || 
+      //     ($.inArray(2, arr) >= 0) && ($.inArray(5, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
+      //     ($.inArray(0, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
+      //     ($.inArray(6, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(2, arr) >= 0))
+
+      //   {
+      //     endGame(owner);
+      //   }
+
+      // }
 
 
 
-    // function updateScore() {
-    //   ownedX = [];
-    //   ownedO = [];
 
-    //   $('.space').each(function() {
-
-    //     if ($(this).attr('owner') == 0) {
-    //       ownedX.push(parseInt($(this).attr('id')));
-    //     } else if ($(this).attr('owner') == 1) {
-    //       ownedO.push(parseInt($(this).attr('id')));
-    //     }
-
-    //     checkWins(ownedX, 0);
-    //     checkWins(ownedO, 1);
-    //   });
-    // }
 
       // function endGame(owner) {
       //   gameOver = true;
@@ -117,21 +138,7 @@
       //   $('.space').addClass( "hover" );
 
       // }
-      // function checkWins(arr, owner) {
-      //   if (($.inArray(0, arr) >= 0) && ($.inArray(1, arr) >= 0) && ($.inArray(2, arr) >= 0) || 
-      //     ($.inArray(3, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(5, arr) >= 0) || 
-      //     ($.inArray(6, arr) >= 0) && ($.inArray(7, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
-      //     ($.inArray(0, arr) >= 0) && ($.inArray(3, arr) >= 0) && ($.inArray(6, arr) >= 0) || 
-      //     ($.inArray(1, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(7, arr) >= 0) || 
-      //     ($.inArray(2, arr) >= 0) && ($.inArray(5, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
-      //     ($.inArray(0, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
-      //     ($.inArray(6, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(2, arr) >= 0))
 
-      //   {
-      //     endGame(owner);
-      //   }
-
-      // }
 
 
 
