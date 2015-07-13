@@ -30,6 +30,8 @@
       function endGame(owner) {
         gameOver = true;
         
+        $('.board').effect('shake', {direction: 'up', distance: 3, times: 3}, 100)
+
         if (owner != 3) {
           $('#status').html('Game over!  The winner is ' + ((owner === 0) ? 'X' : 'O'));
           $('#playagain').show();
@@ -86,10 +88,10 @@
     $('.space').click(
       function() {
         if (gameOver == false) {
-          playCount++;
           if (currentPlayer === 0) {
 
             if ($( this ).attr('avail') != "false") {
+              playCount++;
               $(this).html('<span>X</span>').attr({avail: 'false', owner: 0});
               updateScore();
               currentPlayer = 1;
@@ -97,6 +99,7 @@
 
           } else {
             if ($( this ).attr('avail') != "false") {
+              playCount++;
               $(this).html('<span>O</span>').attr({avail: 'false', owner: 1});
               updateScore();
               currentPlayer = 0;
