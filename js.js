@@ -82,37 +82,40 @@
       currentGame.ownedO = [];
       for (var space in currentGame.spaces) {
           if (currentGame.spaces[space].owner == 1) {
-            currentGame.ownedX.push(space);
+            currentGame.ownedX.push(parseInt(space));
           } else if (currentGame.spaces[space].owner == 2) {
-            currentGame.ownedO.push(space);
+            currentGame.ownedO.push(parseInt(space));
           }
       }
-      checkWins(ownedX, 0);
-      checkWins(ownedO, 1);
+      checkWins(currentGame.ownedX, 1);
+      checkWins(currentGame.ownedO, 2);
 
 
 
     }
 
 
-      // function checkWins(arr, owner) {
-      //   if (($.inArray(0, arr) >= 0) && ($.inArray(1, arr) >= 0) && ($.inArray(2, arr) >= 0) || 
-      //     ($.inArray(3, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(5, arr) >= 0) || 
-      //     ($.inArray(6, arr) >= 0) && ($.inArray(7, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
-      //     ($.inArray(0, arr) >= 0) && ($.inArray(3, arr) >= 0) && ($.inArray(6, arr) >= 0) || 
-      //     ($.inArray(1, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(7, arr) >= 0) || 
-      //     ($.inArray(2, arr) >= 0) && ($.inArray(5, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
-      //     ($.inArray(0, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
-      //     ($.inArray(6, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(2, arr) >= 0))
+      function checkWins(arr, owner) {
+        if (($.inArray(0, arr) >= 0) && ($.inArray(1, arr) >= 0) && ($.inArray(2, arr) >= 0) || 
+          ($.inArray(3, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(5, arr) >= 0) || 
+          ($.inArray(6, arr) >= 0) && ($.inArray(7, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
+          ($.inArray(0, arr) >= 0) && ($.inArray(3, arr) >= 0) && ($.inArray(6, arr) >= 0) || 
+          ($.inArray(1, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(7, arr) >= 0) || 
+          ($.inArray(2, arr) >= 0) && ($.inArray(5, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
+          ($.inArray(0, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(8, arr) >= 0) || 
+          ($.inArray(6, arr) >= 0) && ($.inArray(4, arr) >= 0) && ($.inArray(2, arr) >= 0))
 
-      //   {
-      //     endGame(owner);
-      //   }
+        {
+          endGame(owner);
+        }
 
-      // }
+      }
 
 
+      function endGame(owner) {
 
+
+      }
 
 
       // function endGame(owner) {
