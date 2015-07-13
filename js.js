@@ -11,14 +11,14 @@
     });
 
 
-    function game(gameOver, ownedX, ownedO, currentPlayer, playCount, winner) {
-      a = typeof a !== 'undefined' ? a : 42;
-      this.gameOver =  typeof gameOver !== 'undefined' ? gameOver : false;
-      this.ownedX =  typeof ownedX !== 'undefined' ? ownedX : [];
-      this.ownedO =  typeof ownedO !== 'undefined' ? ownedO : [];
-      this.gameOver =  typeof currentPlayer !== 'undefined' ? currentPlayer : 0;// 0 = X, 1 = O
-      this.gameOver =  typeof playCount !== 'undefined' ? playCount : 0;
-      this.winner =  typeof winner !== 'undefined' ? winner : null;
+    function game() {
+      this.gameOver = false
+      this.ownedX =  [];
+      this.ownedO =  [];
+      this.gameOver =  false;
+      this.currentPlayer =  1;// 1 = X, 2 = O
+      this.playCount = 0;
+      this.winner = 0;
     }
 
     currentGame = new game();
@@ -33,12 +33,45 @@
     Space.prototype.listen = function() {
       var that = this;
       this.element.on('click', function(e){
-        alert("clicked");
+        if (currentGame.gameOver == false) {
+
+          if (currentGame.currentPlayer === 1) {
+            if (that.available != false) {
+              currentGame.playCount++;
+              $(this).html('<span>X</span>');
+              that.available = false;
+              that.owner = 1;
+              // updateScore();
+              currentGame.currentPlayer = 2;
+            } 
+
+          } else {
+            if (that.available != false) {
+              currentGame.playCount++;
+              $(this).html('<span>O</span>');
+              that.available = false;
+              that.owner = 2;
+              // updateScore();
+              currentGame.currentPlayer = 1;
+            } 
+
+          }
+
+        }
+        $('#currentPlayer').html((currentGame.currentPlayer === 1) ? 'X' : 'O');
+        if (playCount == 9) {
+          endGame();
+        }
       });
+
+
+
+
+
     }
 
     $.each($('.space'), function() {
-      var space = new Space($(this));
+      var space = new Space($(this), true, null);
       space.listen();
     });
 
@@ -63,7 +96,7 @@
 
       // function endGame(owner) {
       //   gameOver = true;
-        
+
       //   $('.board').effect('shake', {direction: 'up', distance: 3, times: 3}, 100)
 
       //   if (owner != 3) {
@@ -100,7 +133,7 @@
 
       // }
 
-    
+
 
     // $('.space').hover(
     //   function() {
@@ -148,4 +181,4 @@
 
       // );
 
-  });
+});
