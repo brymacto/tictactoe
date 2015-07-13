@@ -152,41 +152,4 @@
 
       }
 
-
-
-
-
-
-
-
-
-    // $('.space').click(
-    //   function() {
-    //     if (gameOver == false) {
-    //       if (currentPlayer === 0) {
-
-    //         if ($( this ).attr('avail') != "false") {
-    //           playCount++;
-    //           $(this).html('<span>X</span>').attr({avail: 'false', owner: 0});
-    //           updateScore();
-    //           currentPlayer = 1;
-    //         }
-
-    //       } else {
-    //         if ($( this ).attr('avail') != "false") {
-    //           playCount++;
-    //           $(this).html('<span>O</span>').attr({avail: 'false', owner: 1});
-    //           updateScore();
-    //           currentPlayer = 0;
-    //         }
-    //       }
-    //       $('#currentPlayer').html((currentPlayer === 0) ? 'X' : 'O');
-    //       if (playCount == 9) {
-    //         endGame(3);
-    //       }
-    //     }
-    //   }
-
-      // );
-
 });
