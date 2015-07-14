@@ -6,6 +6,7 @@
   var currentGame;
   var winsX = 0;
   var winsO = 0;
+  var gamesPlayed = 0;
   $( document ).ready(function() {
 
     $( '#playagain' ).click(function() {
@@ -121,9 +122,16 @@
         }
 
       }
+      function updateScoreBoard() {
+        $('#gamesPlayed').html(gamesPlayed);
+        $('#winsX').html(winsX);
+        $('#winsO').html(winsO);
+
+      }
 
       function endGame(owner) {
         currentGame.gameOver = true;
+        gamesPlayed++;
         $('.board').effect('shake', {direction: 'up', distance: 3, times: 3}, 100)
         if (owner != 0) {
           $('#status').html('Game over!  The winner is ' + ((owner === 1) ? 'X' : 'O'));
@@ -144,6 +152,8 @@
           $( this ).after( ""
            );
         });
+
+        updateScoreBoard();
 
         $('.space').addClass( "hover" );
 
