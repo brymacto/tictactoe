@@ -3,7 +3,9 @@
   var ownedO = [];
   var gameOver = false;
   var playCount = 0;
-  var currentGame
+  var currentGame;
+  var winsX = 0;
+  var winsO = 0;
   $( document ).ready(function() {
 
     $( '#playagain' ).click(function() {
@@ -21,8 +23,10 @@
       this.spaces = [];
     }
 
-    currentGame = new game();
-
+    newGame();
+    function newGame() {
+      currentGame = new game();  
+    }
     var Space = function (e, available, owner) {
       this.element = e;
       this.available = available;
@@ -124,6 +128,11 @@
         if (owner != 0) {
           $('#status').html('Game over!  The winner is ' + ((owner === 1) ? 'X' : 'O'));
           $('#playagain').show();
+          if (owner === 1) {
+            winsX++;
+          } else {
+            wins0++; 
+          }
         } else 
         {
           $('#status').html("Game over!  There were no winners, only losers :(.");
