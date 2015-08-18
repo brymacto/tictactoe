@@ -46,7 +46,7 @@
 
         function(e) {
           if (currentGame.gameOver == false) {
-            if (that.available != false) {
+            if (that.available != true) {
               $( this ).removeClass( "hover" );
             }
           }
